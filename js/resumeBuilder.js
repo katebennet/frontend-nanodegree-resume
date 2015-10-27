@@ -9,7 +9,7 @@ var bio = {
 	"bioPic" : "images/kate.jpg",
 	"welcomeMessage" : "Hello and welcome to my resume",
 	"location" : "San Francisco, California",
-	"skills" : ["coding", "collaborating", "hiking"]
+	"skills" : ["coding", "collaborating", "hiking", "eating"]
 };
 
 var education = {
@@ -96,6 +96,7 @@ function appendToHeader(html, info) {
 function appendToContacts(html, info) {
   var formatted = html.replace("%data%", info);
   $("#topContacts").append(formatted);
+  $("#footerContacts").append(formatted);
 }
 
 prependToHeader(HTMLheaderRole, bio.role);
@@ -205,6 +206,7 @@ function displayEducation() {
   }
   for (var onlineSchool in education.onlineCourses) {
     $("#education").append(HTMLonlineClasses);      //WHY ISN'T THIS APPEARING FIRST?
+    $("#education").append(HTMLschoolStart);
 
     var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[onlineSchool].title);
     $(".education-entry:last").append(formattedOnlineTitle);
@@ -223,7 +225,7 @@ function displayEducation() {
 displayEducation();
 
 
-$("#mapDiv").append(googleMap); //WHY ISN'T THE MAP APPEARING
+$("#mapDiv").append(googleMap);
 
 $(document).click(function(loc) {
 	var x = loc.pageX;
